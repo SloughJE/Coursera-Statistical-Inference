@@ -2,7 +2,7 @@
 title: "Comparison of the Exponential Distribution and the Central Limit Theorem"
 author: "John Slough II"
 date: "8 Jan 2015"
-output: html_document
+output: pdf_document
 ---
 
 We were asked to investigate the exponential distribution and compare it with the Central Limit Theorem (CLT).  

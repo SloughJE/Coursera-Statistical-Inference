@@ -21,17 +21,17 @@ cumulativemean=cumsum(expdist) / seq_along(expdist)
 cumvar=cumsum((expdist-empiricalmean)^2)/(seq_along(expdist)-1)
 
 ####
-plot(seq_along(expdist),cumulativemean,type="l",lty=1,lwd=2,
+plot(seq_along(expdist),cumulativemean,type="l",lty=1,lwd=1,
      main=expression("Means of 40 exp"(lambda*"=0.2")),xlab="Iteration"
      ,ylab="Mean")
-abline(h=theoreticalmean,col="salmon",lwd=2)
+abline(h=theoreticalmean,col="salmon",lwd=1)
 legend("bottomright", legend=c("Theoretical Mean","Empirical Mean"),
        col=c("salmon","black"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
 
-plot(seq_along(expdist),cumvar,type="l",lty=1,lwd=2,
+plot(seq_along(expdist),cumvar,type="l",lty=1,lwd=1,
      main=expression("Variance of 40 exp"(lambda*"=0.2")),
      xlab="Iteration",ylab="Variance")
-abline(h=theoreticalvariance,col="salmon",lwd=2)
+abline(h=theoreticalvariance,col="salmon",lwd=1)
 legend("bottomright", legend=c("Theoretical Variance",
                                "Empirical Variance"),
        col=c("salmon","black"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
@@ -41,10 +41,10 @@ legend("bottomright", legend=c("Theoretical Variance",
 x=seq(0,8,0.01) 
 hist(expdist,breaks=25,freq=FALSE,col="lightblue",main=expression("Empirical Exponential Distribution of Means of 40 exp"(lambda*"=0.2")),xlab="Value",ylab="Density")
 curve(dnorm(x, mean=theoreticalmean, sd=sqrt(theoreticalvariance)),
-      add=TRUE,lwd=3,col="salmon")
-abline(v=theoreticalmean,lwd=2,col="red")
+      add=TRUE,lwd=2,col="salmon")
+abline(v=theoreticalmean,lwd=2,col="darkred")
 legend("topright", legend=c("Theoretical Mean","Theoretical Distribution"),
-       col=c("red","salmon"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
+       col=c("darkred","salmon"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
 ######
 
 ##################

@@ -36,20 +36,20 @@ I ran a simulation of 40 samples for the exponential distribution, and took the 
 
 The following plot shows the cumulative emperical means of the samples of 40 exponentially distributed values.  According to the CLT, these should converge to the theoretical mean, and we do see this happening as the iterations increase.
 ```{r}
-plot(seq_along(expdist),cumulativemean,type="l",lty=1,lwd=2,
+plot(seq_along(expdist),cumulativemean,type="l",lty=1,lwd=1,
      main=expression("Means of 40 exp"(lambda*"=0.2")),xlab="Iteration"
      ,ylab="Mean")
-abline(h=theoreticalmean,col="salmon",lwd=2)
+abline(h=theoreticalmean,col="salmon",lwd=1)
 legend("bottomright", legend=c("Theoretical Mean","Empirical Mean"),
        col=c("salmon","black"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
 ```
 
 The next plot is similar to the previous one, however it shows the variances of the means of the `r n` exponentially distributed values.  As with the previous plot, the more iterations, the closer the emperical variance gets to the theoretical variance.
 ```{r}
-plot(seq_along(expdist),cumvar,type="l",lty=1,lwd=2,
+plot(seq_along(expdist),cumvar,type="l",lty=1,lwd=1,
      main=expression("Variance of 40 exp"(lambda*"=0.2")),
      xlab="Iteration",ylab="Variance")
-abline(h=theoreticalvariance,col="salmon",lwd=2)
+abline(h=theoreticalvariance,col="salmon",lwd=1)
 legend("bottomright", legend=c("Theoretical Variance",
                                "Empirical Variance"),
        col=c("salmon","black"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
@@ -61,10 +61,10 @@ The following plot shows a histogram of the data.  We can see the theoretical di
 x=seq(0,8,0.01) 
 hist(expdist,breaks=25,freq=FALSE,col="lightblue",main=expression("Empirical Exponential Distribution of Means of 40 exp"(lambda*"=0.2")),xlab="Value",ylab="Density")
 curve(dnorm(x, mean=theoreticalmean, sd=sqrt(theoreticalvariance)),
-      add=TRUE,lwd=3,col="salmon")
-abline(v=theoreticalmean,lwd=2,col="red")
+      add=TRUE,lwd=2,col="salmon")
+abline(v=theoreticalmean,lwd=2,col="darkred")
 legend("topright", legend=c("Theoretical Mean","Theoretical Distribution"),
-       col=c("red","salmon"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
+       col=c("darkred","salmon"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
 ```
 
 Another way to view this is with QQ plots.  This is just another way to visualize how close the empirical distribution is to the normal distribution.  If the data are approximately normally distributed, then the data points should fall on the normal line.  They do.  

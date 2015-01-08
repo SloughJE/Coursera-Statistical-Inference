@@ -2,7 +2,7 @@
 title: "Comparison of the Exponential Distribution and the Central Limit Theorem"
 author: "John Slough II"
 date: "8 Jan 2015"
-output: html_document
+output: pdf_document
 ---
 
 We were asked to investigate the exponential distribution and compare it with the Central Limit Theorem (CLT).  
@@ -11,7 +11,7 @@ Second, I will show a histogram of the empirical values of the 40 means of the e
 Lastly, I will show a QQ plot of the data with the Normal line.  
 
 ```{r}
-set.seed=1234
+set.seed(123)
 lambda=.2
 n=40
 nsim=1000

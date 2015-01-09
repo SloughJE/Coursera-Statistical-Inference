@@ -1,20 +1,20 @@
 ---
 title: "Comparison of the Exponential Distribution and the Central Limit Theorem"
 author: "John Slough II"
-date: "8 Jan 2015"
+date: "9 Jan 2015"
 output: pdf_document
 ---
 
 We were asked to investigate the exponential distribution and compare it with the Central Limit Theorem (CLT).  
 First I will show two plots that show the theoretical mean and variance of the exponential distribution, compared with the cumulative means and variances.  This is a very good way to see the CLT at work.
 Second, I will show a histogram of the empirical values of the 40 means of the exponential distribution and superimpose the normal curve over that data.  This will give a good idea of whether or not the distribution is normal.
-Lastly, I will show a QQ plot of the data with the Normal line.  
+Lastly, I will show a QQ plot of the data with the Normal line, another way to assess normality.  
 
 ```{r}
 set.seed(123)
 lambda=.2
 n=40
-nsim=1000
+nsim=10000
 
 expdist = rep(NA,nsim)
 
@@ -34,7 +34,7 @@ cumvar=cumsum((expdist-empiricalmean)^2)/(seq_along(expdist)-1)
 
 I ran a simulation of 40 samples for the exponential distribution, and took the mean of each sample.  This was iterated `r nsim` times.  I obtained an empirical mean of `r empiricalmean`. The theoretical mean is just 1/lambda, where lambda=0.2. The result is `r theoreticalmean`. As you can see, they are almost identical.  The empirical variance is `r empiricalvariance` and the theoretical variance is `r theoreticalvariance`, obtained by the formula (1/lambda^2)/n. They are also very similar.
 
-The following plot shows the cumulative emperical means of the samples of 40 exponentially distributed values.  According to the CLT, these should converge to the theoretical mean, and we do see this happening as the iterations increase.
+The following plot displays the cumulative emperical means of the samples of 40 exponentially distributed values.  According to the CLT, these should converge to the theoretical mean, and we do see this happening as the iterations increase.
 ```{r}
 plot(seq_along(expdist),cumulativemean,type="l",lty=1,lwd=1,
      main=expression("Means of 40 exp"(lambda*"=0.2")),xlab="Iteration"
@@ -55,7 +55,7 @@ legend("bottomright", legend=c("Theoretical Variance",
        col=c("salmon","black"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
 ```
 
-The following plot shows a histogram of the data.  We can see the theoretical distribution superimposed over the histogram.  The empirical distribution  appears to approximate the normal distribution very well.
+The following plot is a histogram of the data.  We can see the theoretical distribution superimposed over the histogram.  The empirical distribution  appears to approximate the normal distribution very well.
 
 ```{r}
 x=seq(0,8,0.01) 
@@ -67,7 +67,7 @@ legend("topright", legend=c("Theoretical Mean","Theoretical Distribution"),
        col=c("darkred","salmon"), lty=c(1,1),lwd=c(2,2),cex=.8,bty="n")
 ```
 
-Another way to view this is with QQ plots.  This is just another way to visualize how close the empirical distribution is to the normal distribution.  If the data are approximately normally distributed, then the data points should fall on the normal line.  They do.  
+Another way to assess normality is with QQ plots.  If the data are approximately normally distributed, then the data points should fall on the normal line.  They do.  
 
 ```{r}
 qqnorm(expdist,pch=16,cex=.8,col="lightblue")
@@ -79,4 +79,4 @@ legend("bottomright", legend=c("Empirical Values","Normal Line"),
 
 **Conclusion**
 
-From the above plots, we can see that as the iterations increase, the empirical means and variances tend to the theoretical mean and variance. Also, the distribution of the mean is approximately normal.  The is essentially what the CLT states should occur.
+From the above plots, we can see that as the iterations increase, the empirical means and variances tend towards the theoretical mean and variance. Also, the distribution of the means is approximately normal.  This is essentially what the CLT states should occur.

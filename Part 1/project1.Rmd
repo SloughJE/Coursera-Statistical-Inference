@@ -1,3 +1,6 @@
+library(knitr)
+knit2html("project1.Rmd")
+
 ---
 title: "Comparison of the Exponential Distribution and the Central Limit Theorem"
 author: "John Slough II"
